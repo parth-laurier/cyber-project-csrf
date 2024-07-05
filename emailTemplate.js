@@ -1,5 +1,5 @@
 const emailTemplate = () => ({
-  subject: 'CSRF Attack: Countermeasure',
+  subject: 'CSRF Attack: Demo',
   content: `
   <!DOCTYPE HTML>
 <html>
@@ -42,7 +42,6 @@ const emailTemplate = () => ({
                 <a href="http://localhost:3000/perform-action" class="button">Update</a>
               </div>
               <p style="padding: 0 0 5px;text-align: left; margin: 0; color: #000000;">Thank you</p>
-              <p style="text-align: left; margin: 0; color: #000000;">Team Sparsh</p>
             </div>
           </div>
         </td>

@@ -1,10 +1,10 @@
 const express = require("express");
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const csrf = require('csurf');
-const sendEmailNotification =  require('./notification');
-const emailTemplate = require('./emailTemplate')
+const sendEmailNotification = require('./notification');
+const emailTemplate = require('./emailTemplate');
 const fetch = require("node-fetch");
+const cookieParser = require('cookie-parser');
 
 const port = 3000;
 const app = express();
@@ -15,33 +15,33 @@ app.set('views', './templates');
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(session({
   secret: 'my-secret',
   resave: true,
   saveUninitialized: true,
   cookie: {
-    httpOnly: true
+    httpOnly: true,
+    maxAge: 60000
   }
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(csrf());
+app.use(bodyParser.json());
 
 const sendEmail = (email) => {
-  // Email
-const emailOptions = {
-  to: email,
-  subject: 'CSRF Attack: Countermeasure',
-  html: emailTemplate(),
+  const emailOptions = {
+    to: email,
+    subject: 'CSRF Attack: Countermeasure',
+    html: emailTemplate(),
+  };
+  sendEmailNotification(emailOptions);
 };
-sendEmailNotification(emailOptions);
-}
 
 app.get('/', function (req, res) {
   console.log("1");
   res.render('index', {
-    isValidSession: req.session.isValid, 
+    isValidSession: req.session.isValid,
     username: req.session.username,
-    csrfToken: req.csrfToken(),
     reviews
   });
 });
@@ -50,10 +50,9 @@ app.post('/reviews', async function (req, res) {
   console.log("2");
   if (req.session.isValid && req.body.newReview) reviews.push(req.body.newReview);
   await sendEmail(req.session.email);
-	res.render('index', {
+  res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
-    csrfToken: req.csrfToken(),
     reviews
   });
 });
@@ -70,9 +69,8 @@ app.get('/user', function (req, res) {
   console.log("4");
   if (req.session.isValid) {
     res.render('user', {
-      username: req.session.username, 
+      username: req.session.username,
       email: req.session.email,
-      csrfToken: req.csrfToken()
     });
   } else {
     res.redirect('/');
@@ -82,6 +80,8 @@ app.get('/user', function (req, res) {
 app.post('/user', function (req, res) {
   console.log("5");
   if (req.session.isValid) {
+    console.log("inside");
+    console.log("req.body", req.body);
     req.session.username = req.body.username;
     req.session.email = req.body.email;
     res.redirect('/user');
@@ -91,31 +91,57 @@ app.post('/user', function (req, res) {
 });
 
 app.get('/perform-action', async function (req, res) {
-    const url = 'http://localhost:3000/user';
-    const data = {
-      username: 'The Attacker',
-      email: 'theattacker@attacker.com'
-    };
+  const url = 'http://localhost:3000/user';
+  const data = {
+    username: 'The Attacker',
+    email: 'theattacker@attacker.com'
+  };
+
+  if (req.session.isValid) {
+    const sessionCookie = req.headers.cookie; // Extract session cookie from the request
+
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Cookie': sessionCookie // Include the session cookie in the headers
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        redirect: 'manual' // Prevent fetch from automatically following redirects
       });
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('Success:', responseData);
-        res.send('Action performed successfully!');
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers.raw());
+
+      const responseBody = await response.text();
+      console.log('Response body:', responseBody);
+      if (response.ok || response.status === 302) {
+        // Follow the redirection manually
+        const location = response.headers.get('location');
+        if (location) {
+          req.session.username = data.username;
+          req.session.email = data.email;
+          res.setHeader('Location', location);
+          res.status(302).json({
+            message: 'Session values updated',
+            username: req.session.username,
+            email: req.session.email
+          });
+        } else {
+          const body = await response.text();
+          res.send(body);
+        }
       } else {
         throw new Error('Failed to send request');
       }
     } catch (error) {
       console.error('Error:', error);
-      res.send('Invalid csrf token');
+      res.send('Failed to perform the action.');
     }
-  });
+  } else {
+    res.redirect('/');
+  }
+});
 
 app.listen(port, () => console.log(`The server is listening at http://localhost:${port}`));
-
