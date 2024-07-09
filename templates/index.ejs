@@ -3,49 +3,24 @@
   <head>
     <meta charset=utf-8>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
-    <title>The Vulnerable Movie Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>LaptopBay</title>
     <style>
-      body {
-        padding-top:0px;
-      }
-      .thin {
-        margin-top:5px;
-        margin-bottom:5px;
-      }
-      #search-form {
-        text-align:right;
-        margin-bottom:0;
-        padding-bottom:0;
-      }
-      #search-result {
-        display: none;
-      }
-      #movie-data {
-        padding-bottom:10px;
-      }
-      #playbill {
-        vertical-align:top;
-        margin:10px;
-      }
-      #movie-details {
-        display:inline-block;
-        width:40%;
-      }
-      #search-term {
-        font-style: italic;
-      }
+      
     </style>
 
-  <script src="js/search.js"></script>
   </head>
   <body>
     <section>
-      <h1 style="margin-top:5px">The Vulnerable Movie Center</h1>
-      <hr class="thin">
-      <form id="search-form" onsubmit="return search()">
-        <input id="keyword" type="text" class="thin" placeholder="Search a movie"><button type="submit" class="thin">Go</button></form>
-      <hr class="thin">
+      <h1 style="margin-top:5px">The LaptopBay</h1>
+      <hr>
+        <div class="session-line"><a href="session/new" type="button" class="login-btn btn">LOGIN</a>
+      <hr>
 
       <% if (isValidSession) { %>
         <div style="text-align: right">
@@ -60,39 +35,103 @@
     </section>
 
     <section id="movie-data">
-      <img id="playbill" src="images/good-bad-ugly.jpg"/>
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/laptop_images/1.jpg" class="d-block w-100 playbill" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/laptop_images/2.jpg" class="d-block w-100 playbill" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+    
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/laptop_images/3.jpg" class="d-block w-100 playbill" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/laptop_images/4.jpg" class="d-block w-100 playbill" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/laptop_images/5.jpg" class="d-block w-100 playbill" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
       <div id="movie-details">
-        <b>Title:</b> The Good, the Bad and the Ugly<br/>
-        <b>Year:</b> 1966<br/>
-        <b>Directed by:</b> Sergio Leone<br/>
-        <b>Starring:</b> Clint Eastwood, Lee Van Cleef, Eli Wallach<br/>
-        <b>Duration:</b> 177 min.<br/>
-        <br/>
-        <b>Plot:</b>
-        <p>During the Civil War, two men forming an uneasy alliance as bounty hunting scammers have to fight against a third in a race to find a treasure in gold buried in a remote cemetery.</p>
-        <button type="submit">Play</button>
+
+        <div class="grid-container">
+          <button class="laptop-btn model">Model</button>
+          <button class="laptop-btn spec">Specification</button>
+          <button class="laptop-btn color">Colour</button>
+          <button class="laptop-btn display">Display</button>
+          <button class="laptop-btn os">OS</button>
+          <button class="laptop-btn access">Accessories</button>
+        </div>
+        
+        <h3><b>Price : </b> $4000 CAD<br/></h3>
+        <br>
+        <h5>The BEST.</h5>
       </div>
     </section>
 
     <section id="comments">
-      <form method="post" action="reviews">
-        <fieldset>
-          <textarea name="newReview" cols="80" rows="5" placeholder="Add your review"></textarea>
+      <form method="post" action="reviews" class="container">
+        
           <% if (!isValidSession) { %>
-            <div>You need a <a href="session/new"">valid session</a> to submit a review.</div>
+          <div class="row login-statement">
+            Please LOGIN above to procced to purchase the product.
+            </div>
+          </div>
           <% } %>
-        </fieldset>
-        <fieldset>
-          <button type="submit">Submit</button>  
-        </fieldset>
+          <div class="row">
+            <div class="col-4">
+              <input id="name" type="text" class="thin detail" placeholder="Name" name = "">
+            </div>
+            <div class="col-4">
+            <input id="card" type="text" class="thin detail" placeholder="Card Number">
+            </div>
+            <div class="col-4">
+            <input id="cvv" type="text" class="thin detail" placeholder="CVV">
+            </div>
+            <br>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="submit" class="submit-btn" onclick='alert("We have emailed you the receipt")'>PAY</button>
+            </div>
+          </div>
+          
       </form>
       <hr>
-      <h2>Comments</h2>
-      <dl>
-        <% reviews.forEach(review => {%>
-          <dt><%= username %></dt><dd><%= review %></dd>
-        <% }); %>
-      </dl>
+      <p class="footer">COPYRIGHT 2024</p>
+      
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
