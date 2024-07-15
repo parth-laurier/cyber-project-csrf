@@ -61,8 +61,8 @@ app.post('/reviews', async function (req, res) {
 app.get('/session/new', function (req, res) {
   console.log('3');
   req.session.isValid = true;
-  req.session.username = 'Parth';
-  req.session.email = 'psshah0411@gmail.com';
+  req.session.username = 'Guneet';
+  req.session.email = 'sid.alpha13@gmail.com';
   res.redirect('/');
 });
 

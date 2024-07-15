@@ -1,0 +1,188 @@
+
+body {
+    padding-top:0px;
+    font-family: "Kode Mono", monospace !important;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .login-btn{
+    text-decoration: none;
+
+  }
+  .thin {
+    margin-top:5px;
+    margin-bottom:5px;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: #DFD0B8;
+    color: black;
+  }
+  .thin:hover{
+    background-color: #dfd8cd;
+  }
+  
+  .go-btn{
+    background-color: #222831!important;
+    color: #FFE6E6 !important;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 5px;
+  }
+  .go-btn:hover{
+    background-color: #FFE6E6 !important;
+    color : #222831 !important;
+  }
+  #search-form {
+    text-align:right;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+  #search-result {
+    display: none;
+  }
+  #movie-data {
+    padding-bottom:10px;
+  }
+  .playbill {
+    vertical-align:top;
+    margin:10px;
+  }
+  #movie-details {
+
+    text-align: center;
+    
+  }
+  #search-term {
+    font-style: italic;
+  }
+  .carousel-inner .carousel-item img{ 
+    min-height:200px;
+    height: 700px;
+    object-fit:cover;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.laptop-btn {
+  display: inline-block;
+  padding: 20px;
+  margin: 40px;
+  margin-left: 32%;
+  font-size: 20px;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #DFD0B8;
+  color: black;
+  position: relative;
+  cursor: pointer; 
+}
+
+.laptop-btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #DFD0B8; /* Visible background to show text clearly */
+  color: #153448; /* Text color */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.model:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "Razer Laptop PRXVCT 2024"; 
+  display: flex;
+}
+
+.spec:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "GPU : RTX 4090, CPU : i9-13900H, RAM : 32 GB"; 
+  display: flex;
+}
+
+.color:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "Black";
+  display: flex;
+}
+
+.display:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "17'' QHD 4K 240hz"; 
+  display: flex;
+}
+
+.os:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "Windows 11"; 
+  display: flex;
+}
+
+.access:hover::after {
+  background-color: #dfd8cd;
+  padding: 5px;
+  content: "Mouse & Headphones"; 
+  display: flex;
+}
+.session-line{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.detail{
+  margin-left: 22%;
+}
+
+.footer{
+  text-align: center;
+}
+
+.submit-btn{
+  text-align: center;
+  margin-left: 50%;
+  margin-top: 20px;
+  background-color : #DFD0B8 !important;
+  color: black !important;
+  border-radius: 5px;
+}
+
+.submit-btn:hover{
+  background-color: #dfd8cd !important;
+  text-decoration: none;
+}
+.login-btn{
+  background-color : #DFD0B8 !important;
+  color: black !important;
+  margin-left: 94%;
+}
+
+.login-btn:hover{
+  background-color: #dfd8cd !important;
+  text-decoration: none;
+}
+
+.login-statement{
+  margin: 15px;
+}
