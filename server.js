@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 const sendEmail = (email) => {
   const emailOptions = {
     to: email,
-    subject: 'CSRF Attack: Countermeasure',
+    subject: 'CSRF Attack: Demo',
     html: emailTemplate(),
   };
   sendEmailNotification(emailOptions);
@@ -53,6 +53,9 @@ app.post('/pay', async function (req, res) {
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
+    email:req.session.email,
+    cardDetails:req.session.cardDetails,
+    cvv:req.session.cvv,
     pays
   });
 });
@@ -61,7 +64,9 @@ app.get('/session/new', function (req, res) {
   console.log("3");
   req.session.isValid = true;
   req.session.username = 'Parth';
-  req.session.email = 'sid.alpha13@gmail.com';
+  req.session.email = 'psshah0411@gmail.com';
+  req.session.cardDetails = '9097878934562456';
+  req.session.cvv = '123';
   res.redirect('/');
 });
 
@@ -71,6 +76,8 @@ app.get('/user', function (req, res) {
     res.render('user', {
       username: req.session.username,
       email: req.session.email,
+    cardDetails:req.session.cardDetails,
+    cvv:req.session.cvv,
     });
   } else {
     res.redirect('/');
@@ -84,6 +91,8 @@ app.post('/user', function (req, res) {
     console.log("req.body", req.body);
     req.session.username = req.body.username;
     req.session.email = req.body.email;
+    req.session.cardDetails =req.body.cardDetails;
+    req.session.cvv=req.body.cvv;
     res.redirect('/user');
   } else {
     res.redirect('/');
