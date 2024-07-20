@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const port = 3000;
 const app = express();
 
-let reviews = [];
+let pays = [];
 
 app.set('views', './templates');
 app.set('view engine', 'ejs');
@@ -42,18 +42,18 @@ app.get('/', function (req, res) {
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
-    reviews
+    pays
   });
 });
 
-app.post('/reviews', async function (req, res) {
+app.post('/pay', async function (req, res) {
   console.log("2");
-  if (req.session.isValid && req.body.newReview) reviews.push(req.body.newReview);
+  if (req.session.isValid && req.body.pay) pays.push(req.body.pay);
   await sendEmail(req.session.email);
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
-    reviews
+    pays
   });
 });
 
