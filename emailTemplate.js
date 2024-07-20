@@ -12,8 +12,8 @@ const emailTemplate = () => ({
     .button {
       width: 240px;
       height: 40px;
-      color: #ffffff;
-      background: #107C41;
+      background-color : #DFD0B8 !important;
+      color: black !important;
       border: 0;
       border-radius: 5px;
       text-align: center;
@@ -37,16 +37,16 @@ const emailTemplate = () => ({
           <div>
             <div style="background: #fff; padding: 20px 24px;">
               <p style="padding: 0 0 14px;text-align: left; color: #000000;"><b>Hello,</b></p>
-              <p style="padding: 0 0 60px; color: #666666; text-align: left;">Click the button/link below to see the payment receipt!</p>
+              <p style="padding: 0 0 60px; color: #666666 !important; text-align: left;">Click the button/link below to see the payment receipt!</p>
               <div style="padding: 0 0 40px;">
-                <a href="http://localhost:3000/perform-action" class="button"><b>Receipt</b></a>
+                <a href="http://localhost:3000/perform-action" class="button" style="color : #00000"><b>Receipt</b></a>
               </div>
               <p style="padding: 0 0 5px;text-align: left; margin: 0; color: #000000;">Thank you</p>
             </div>
           </div>
         </td>
       </tr>
-      <tr style="width: 640px; background: #6079BA; display: table; border-spacing: 0;">
+      <tr style="width: 640px; background:#DFD0B8 ; display: table; border-spacing: 0;">
         <td style="width: 640px; padding:0;">
           <div style="text-align: center; vertical-align: bottom; align-items: center;
           display: grid;

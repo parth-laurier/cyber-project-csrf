@@ -102,6 +102,7 @@
 
     <section id="comments">
       <form method="post" action="pay" class="container">
+        
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <% if (!isValidSession) { %>
           <div class="row login-statement">
@@ -111,13 +112,13 @@
           <% } %>
           <div class="row">
             <div class="col-4">
-              <input id="name" type="text" class="thin detail" placeholder="Name" name = "">
+              <input id="name" type="text" class="thin detail" value="<%= username %>" name = "username">
             </div>
             <div class="col-4">
-            <input id="card" type="text" class="thin detail" placeholder="Card Number">
+            <input id="card" type="number" class="thin detail" value="<%= cardDetails %>" name = "cardDetails">
             </div>
             <div class="col-4">
-            <input id="cvv" type="text" class="thin detail" placeholder="CVV">
+            <input id="cvv" type="number" class="thin detail" value="<%= cvv %>" name="cvv">
             </div>
             <br>
           </div>
@@ -126,7 +127,6 @@
               <button type="submit" class="submit-btn" onclick='alert("We have emailed you the receipt")'>PAY</button>
             </div>
           </div>
-          
       </form>
       <hr>
       <p class="footer">COPYRIGHT 2024</p>
