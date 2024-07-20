@@ -9,7 +9,7 @@ const fetch = require("node-fetch");
 const port = 3000;
 const app = express();
 
-let reviews = [];
+let pays = [];
 
 app.set('views', './templates');
 app.set('view engine', 'ejs');
@@ -42,19 +42,19 @@ app.get('/', function (req, res) {
     isValidSession: req.session.isValid,
     username: req.session.username,
     csrfToken: req.csrfToken(),
-    reviews
+    pays
   });
 });
 
-app.post('/reviews', async function (req, res) {
+app.post('/pay', async function (req, res) {
   console.log('2');
-  if (req.session.isValid && req.body.newReview) reviews.push(req.body.newReview);
+  if (req.session.isValid && req.body.newPayment) pays.push(req.body.newPayment);
   await sendEmail(req.session.email, req.csrfToken());
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
     csrfToken: req.csrfToken(),
-    reviews
+    pays
   });
 });
 
@@ -62,7 +62,7 @@ app.get('/session/new', function (req, res) {
   console.log('3');
   req.session.isValid = true;
   req.session.username = 'Guneet';
-  req.session.email = 'sid.alpha13@gmail.com';
+  req.session.email = 'psshah0411@gmail.com';
   res.redirect('/');
 });
 

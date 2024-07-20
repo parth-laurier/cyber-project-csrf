@@ -101,8 +101,8 @@
     </section>
 
     <section id="comments">
-      <form method="post" action="reviews" class="container">
-        
+      <form method="post" action="pay" class="container">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <% if (!isValidSession) { %>
           <div class="row login-statement">
             Please LOGIN above to procced to purchase the product.
