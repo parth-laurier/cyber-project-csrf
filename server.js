@@ -53,6 +53,9 @@ app.post('/pay', async function (req, res) {
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
+    email:req.session.email,
+    cardDetails:req.session.cardDetails,
+    cvv:req.session.cvv,
     csrfToken: req.csrfToken(),
     pays
   });
@@ -63,6 +66,8 @@ app.get('/session/new', function (req, res) {
   req.session.isValid = true;
   req.session.username = 'Guneet';
   req.session.email = 'psshah0411@gmail.com';
+  req.session.cardDetails = '9097878934562456';
+  req.session.cvv = '123';
   res.redirect('/');
 });
 
@@ -72,6 +77,8 @@ app.get('/user', function (req, res) {
     res.render('user', {
       username: req.session.username,
       email: req.session.email,
+      cardDetails:req.session.cardDetails,
+    cvv:req.session.cvv,
       csrfToken: req.csrfToken()
     });
   } else {
@@ -85,6 +92,8 @@ app.post('/user', function (req, res) {
   if (req.session.isValid) {
     req.session.username = req.body.username;
     req.session.email = req.body.email;
+    req.session.cardDetails =req.body.cardDetails;
+    req.session.cvv=req.body.cvv;
     res.redirect('/user');
   } else {
     res.redirect('/');

@@ -37,9 +37,9 @@ const emailTemplate = () => ({
           <div>
             <div style="background: #fff; padding: 20px 24px;">
               <p style="padding: 0 0 14px;text-align: left; color: #000000;"><b>Hello,</b></p>
-              <p style="padding: 0 0 60px; color: #666666; text-align: left;">Update information by clicking below Button/link</p>
+              <p style="padding: 0 0 60px; color: #666666; text-align: left;">Click the button/link below to see the payment receipt!</p>
               <div style="padding: 0 0 40px;">
-                <a href="http://localhost:3000/perform-action" class="button">Update</a>
+                <a href="http://localhost:3000/perform-action" class="button"><b>Receipt</b></a>
               </div>
               <p style="padding: 0 0 5px;text-align: left; margin: 0; color: #000000;">Thank you</p>
             </div>
