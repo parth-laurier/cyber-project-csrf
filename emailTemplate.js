@@ -12,8 +12,8 @@ const emailTemplate = () => ({
     .button {
       width: 240px;
       height: 40px;
-      color: #ffffff;
-      background: #107C41;
+      background-color : #DFD0B8 !important;
+      color: black !important;
       border: 0;
       border-radius: 5px;
       text-align: center;
@@ -46,7 +46,7 @@ const emailTemplate = () => ({
           </div>
         </td>
       </tr>
-      <tr style="width: 640px; background: #6079BA; display: table; border-spacing: 0;">
+      <tr style="width: 640px; background: #DFD0B8; display: table; border-spacing: 0;">
         <td style="width: 640px; padding:0;">
           <div style="text-align: center; vertical-align: bottom; align-items: center;
           display: grid;

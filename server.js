@@ -42,6 +42,8 @@ app.get('/', function (req, res) {
   res.render('index', {
     isValidSession: req.session.isValid,
     username: req.session.username,
+    cardDetails:req.session.cardDetails,
+    cvv:req.session.cvv,
     pays
   });
 });
@@ -64,9 +66,9 @@ app.get('/session/new', function (req, res) {
   console.log("3");
   req.session.isValid = true;
   req.session.username = 'Parth';
-  req.session.email = 'psshah0411@gmail.com';
+  req.session.email = 'sid.alpha13@gmail.com';
   req.session.cardDetails = '9097878934562456';
-  req.session.cvv = '123';
+  req.session.cvv = '369';
   res.redirect('/');
 });
 

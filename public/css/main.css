@@ -232,6 +232,7 @@ h5 {
     font-weight: bold;
     line-height: 21.6px;
     text-transform: uppercase;
+    margin-top: 30px !important;
 }
 h6 {
     color: #595959;
