@@ -109,7 +109,7 @@
             Please LOGIN above to procced to purchase the product.
             </div>
           </div>
-          <% } %>
+          <% } else { %>
           <div class="row">
             <div class="col-4">
               <input id="name" type="text" class="thin detail" value="<%= username %>" name = "username">
@@ -128,6 +128,7 @@
             </div>
           </div>
       </form>
+      <% } %>
       <hr>
       <p class="footer">COPYRIGHT 2024</p>
       
