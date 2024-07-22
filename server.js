@@ -95,8 +95,8 @@ app.post('/user', function (req, res) {
   if (req.session.isValid) {
     req.session.username = req.body.username;
     req.session.email = req.body.email;
-    req.session.cardDetails = req.body.cardDetails;
-    req.session.cvv=req.body.cvv;
+    req.session.cardDetails = req.body.cardDetails || '9097878934562456';
+    req.session.cvv=req.body.cvv || '369';
     res.redirect('/user');
   } else {
     res.redirect('/');
