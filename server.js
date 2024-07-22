@@ -65,7 +65,7 @@ app.post('/pay', async function (req, res) {
 app.get('/session/new', function (req, res) {
   console.log("3");
   req.session.isValid = true;
-  req.session.username = 'Parth';
+  req.session.username = 'Guneet';
   req.session.email = 'sid.alpha13@gmail.com';
   req.session.cardDetails = '9097878934562456';
   req.session.cvv = '369';
@@ -93,8 +93,8 @@ app.post('/user', function (req, res) {
     console.log("req.body", req.body);
     req.session.username = req.body.username;
     req.session.email = req.body.email;
-    req.session.cardDetails =req.body.cardDetails;
-    req.session.cvv=req.body.cvv;
+    req.session.cardDetails = req.body.cardDetails || '9097878934562456';
+    req.session.cvv=req.body.cvv || '369';
     res.redirect('/user');
   } else {
     res.redirect('/');
