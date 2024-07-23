@@ -65,8 +65,8 @@ app.post('/pay', async function (req, res) {
 app.get('/session/new', function (req, res) {
   console.log("3");
   req.session.isValid = true;
-  req.session.username = 'Guneet';
-  req.session.email = 'sid.alpha13@gmail.com';
+  req.session.username = 'Guneet'; // Add user name
+  req.session.email = 'sid.alpha13@gmail.com'; // add email to receive attacker email 
   req.session.cardDetails = '9097878934562456';
   req.session.cvv = '369';
   res.redirect('/');
